@@ -6,6 +6,7 @@ def main():
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
     bg_img = pg.image.load("ex01-20230418/fig/pg_bg.jpg")
+    bg_img2 = pg.transform.flip(bg_img,True,False)
     kk_img = pg.image.load("ex01-20230418/fig/3.png")
     kk_img = pg.transform.flip(kk_img, True, False)
     
@@ -20,11 +21,11 @@ def main():
 
         tmr += 1
         
-        tmr_bgx = tmr % 1600
-        screen.blit(bg_img, [-tmr_bgx, 0])
-
+        tmr_bgx = tmr % 3200
+        screen.blit(bg_img2, [-tmr_bgx, 0])
         screen.blit(bg_img, [1600-tmr_bgx,0])
-        # tmr_kk+=1
+        screen.blit(bg_img2,[3200-tmr_bgx,0])
+        
         if tmr % 100==1:
             tmr_kk=(tmr_kk+1)%2
         
@@ -33,7 +34,7 @@ def main():
         screen.blit(kk_imgs[tmr_kk], [300,200])
         
         pg.display.update()
-        clock.tick(100)
+        clock.tick(500)
         
 
 
